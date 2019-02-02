@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  dhcp:
+    image: kerwood/isc-dhcp
+    container_name: isc-dhcp
+    restart: unless-stopped
+    network_mode: "host"
+    environment:
+      - "INTERFACES=ens192 ens256"
+    volumes:
+      - /path/to/dhcpd.conf:/etc/dhcpd.conf
+      - dhcp-data:/var/lib/dhcp
